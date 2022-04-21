@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* rubik-regular */
+  @font-face {
+    font-family: 'Rubik';
+    font-weight: 400;
+
+    src: url('/fonts/rubik-v19-latin-regular.woff2') format('woff2'),
+      url('/fonts/rubik-v19-latin-regular.woff') format('woff');
+  }
+  /* rubik-500 */
+  @font-face {
+    font-family: 'Rubik';
+    font-weight: 500;
+
+    src: url('/fonts/rubik-v19-latin-500.woff2') format('woff2'),
+      url('/fonts/rubik-v19-latin-500.woff') format('woff');
+  }
+  /* rubik-700 */
+  @font-face {
+    font-family: 'Rubik';
+    font-weight: 700;
+
+    src: url('/fonts/rubik-v19-latin-700.woff2') format('woff2'),
+      url('/fonts/rubik-v19-latin-700.woff') format('woff');
+  }
+
+  .text-default {
+    @apply text-lg;
+  }
+
+  .after-border-r {
+    @apply after:hidden sm:landscape:after:block sm:landscape:after:absolute sm:landscape:after:content-[''] sm:landscape:after:bg-secondaryGray sm:landscape:after:w-px sm:landscape:after:h-20 sm:landscape:after:top-2 sm:landscape:after:-right-5 lg:after:block lg:after:absolute lg:after:content-[''] lg:after:bg-secondaryGray lg:after:w-px lg:after:h-20 lg:after:top-2 lg:after:-right-2.5 lg:landscape:after:-right-2.5;
+  }
+}
+
+/* xtra small screen */
+@media (max-width: 375px) {
+  input {
+    font-size: 0.8125rem;
+  }
+}
