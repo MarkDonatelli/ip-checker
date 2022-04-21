@@ -21,15 +21,14 @@ import IPDetails from './components/IPDetails.vue';
 import IPMap from './components/IPMap.vue';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import markerIcon from '../node_modules/leaflet/dist/images/marker-icon.png';
 import axios from 'axios';
 
-delete L.Icon.Default.prototype._getIconUrl;
-
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: '/src/assets/images/marker-icon-2x.png',
-  iconUrl: '/src/assets/images/marker-icon.png',
-  shadowUrl: '/src/assets/images/marker-shadow.png',
-});
+L.Marker.prototype.setIcon(
+  L.icon({
+    iconUrl: markerIcon,
+  })
+);
 
 export default {
   mixins: [helpersMixin],
