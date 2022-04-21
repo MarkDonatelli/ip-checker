@@ -1,3 +1,8 @@
+### Steps For Local Development
+
+- Npm install
+- Npm run dev
+
 ### Added To Project by Mark Donatelli
 
 - Vue.js w Vite: https://vuejs.org/guide/quick-start.html
