@@ -20,8 +20,6 @@
   </div>
 </template>
 
-<style></style>
-
 <script>
 import { helpersMixin } from './mixins/helpers.js';
 import GetIPForm from './components/GetIPForm.vue';
@@ -31,6 +29,17 @@ import Spinner from './components/Spinner.vue';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import axios from 'axios';
+import iconRetinaUrl from '@/assets/images/marker-icon-2x.png';
+import iconUrl from '@/assets/images/marker-icon.png';
+import shadowUrl from '@/assets/images/marker-shadow.png';
+
+delete L.Icon.Default.prototype._getIconUrl;
+
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: iconRetinaUrl,
+  iconUrl: iconUrl,
+  shadowUrl: shadowUrl,
+});
 
 export default {
   mixins: [helpersMixin],
@@ -64,12 +73,14 @@ export default {
     const getCurrentIPData = () => {
       return new Promise((resolve, reject) => {
         this.loading = true;
-        axios.get(`${this.initialIpUrl}`).then((response) => {
-          this.$store.commit('SET_CURRENT_IP', response.data);
-          this.currentIP = this.$store.state.currentIP;
-          resolve();
-          this.loading = false;
-        });
+        setTimeout(() => {
+          axios.get(`${this.initialIpUrl}`).then((response) => {
+            this.$store.commit('SET_CURRENT_IP', response.data);
+            this.currentIP = this.$store.state.currentIP;
+            resolve();
+            this.loading = false;
+          });
+        }, 1000);
       });
     };
 
