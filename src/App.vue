@@ -64,14 +64,12 @@ export default {
     const getCurrentIPData = () => {
       return new Promise((resolve, reject) => {
         this.loading = true;
-        setTimeout(() => {
-          axios.get(`${this.initialIpUrl}`).then((response) => {
-            this.$store.commit('SET_CURRENT_IP', response.data);
-            this.currentIP = this.$store.state.currentIP;
-            resolve();
-            this.loading = false;
-          });
-        }, 1000);
+        axios.get(`${this.initialIpUrl}`).then((response) => {
+          this.$store.commit('SET_CURRENT_IP', response.data);
+          this.currentIP = this.$store.state.currentIP;
+          resolve();
+          this.loading = false;
+        });
       });
     };
 
