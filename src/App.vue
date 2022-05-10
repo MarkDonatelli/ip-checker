@@ -32,6 +32,14 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import axios from 'axios';
 
+delete L.Icon.Default.prototype._getIconUrl;
+
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: 'src/assets/images/marker-icon-2x.png',
+  iconUrl: 'src/assets/images/marker-icon.png',
+  shadowUrl: 'src/assets/images/marker-shadow.png',
+});
+
 export default {
   mixins: [helpersMixin],
   data() {
