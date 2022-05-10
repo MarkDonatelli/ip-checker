@@ -9,10 +9,7 @@
   </header>
 
   <!--map -->
-  <div
-    class="flex items-center h-[70vh] md:h-[90vh] lg:h-[80vh]"
-    v-if="loading"
-  >
+  <div class="flex items-center h-[40vh]" v-if="loading">
     <Spinner />
   </div>
   <div v-else>
