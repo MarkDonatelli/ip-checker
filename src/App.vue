@@ -9,7 +9,15 @@
   </header>
 
   <!--map -->
-  <IPMap />
+  <div
+    class="flex items-center h-[70vh] md:h-[90vh] lg:h-[80vh]"
+    v-if="loading"
+  >
+    <Spinner />
+  </div>
+  <div v-else>
+    <IPMap />
+  </div>
 </template>
 
 <style></style>
@@ -19,16 +27,10 @@ import { helpersMixin } from './mixins/helpers.js';
 import GetIPForm from './components/GetIPForm.vue';
 import IPDetails from './components/IPDetails.vue';
 import IPMap from './components/IPMap.vue';
+import Spinner from './components/Spinner.vue';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import markerIcon from '../node_modules/leaflet/dist/images/marker-icon.png';
 import axios from 'axios';
-
-L.Marker.prototype.setIcon(
-  L.icon({
-    iconUrl: markerIcon,
-  })
-);
 
 export default {
   mixins: [helpersMixin],
@@ -36,6 +38,7 @@ export default {
     return {
       initialIpUrl: 'https://api.ipify.org',
       currentIP: '',
+      loading: true,
     };
   },
   mounted() {
@@ -60,16 +63,20 @@ export default {
 
     const getCurrentIPData = () => {
       return new Promise((resolve, reject) => {
-        axios.get(`${this.initialIpUrl}`).then((response) => {
-          this.$store.commit('SET_CURRENT_IP', response.data);
-          this.currentIP = this.$store.state.currentIP;
-          resolve();
-        });
+        this.loading = true;
+        setTimeout(() => {
+          axios.get(`${this.initialIpUrl}`).then((response) => {
+            this.$store.commit('SET_CURRENT_IP', response.data);
+            this.currentIP = this.$store.state.currentIP;
+            resolve();
+            this.loading = false;
+          });
+        }, 1000);
       });
     };
 
     getCurrentIPData().then(() => setCurrentIPData());
   },
-  components: { GetIPForm, IPDetails, IPMap, L },
+  components: { GetIPForm, IPDetails, Spinner, IPMap, L },
 };
 </script>
