@@ -4,8 +4,8 @@ export const helpersMixin = {
       url: `https://wookie.codesubmit.io/ipcheck?ip=`,
       headers: {
         Authorization: 'Bearer WookieIP2022',
-        'Content-Type': 'application/json',
-      },
+        'Content-Type': 'application/json'
+      }
     };
   },
   methods: {
@@ -18,7 +18,7 @@ export const helpersMixin = {
         this.$store.state.map
       );
       L.tileLayer(
-        'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFya2RvbmF0ZWxsaSIsImEiOiJjbDIyNjNkZXYwYnMxM29ycmdhbXJsNHp2In0.wAFG3GIL_ihD-7cUiFFKVw',
+        'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFya2RvbmF0ZWxsaSIsImEiOiJjbTV6dGN6cHUwNmFxMmxxMDU2bm9qYjZmIn0.Ph5vwBssV0P1CeyoXfq1CQ',
         {
           attribution:
             'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -27,7 +27,7 @@ export const helpersMixin = {
           tileSize: 512,
           zoomOffset: -1,
           accessToken:
-            'pk.eyJ1IjoibWFya2RvbmF0ZWxsaSIsImEiOiJjbDIyNjNkZXYwYnMxM29ycmdhbXJsNHp2In0.wAFG3GIL_ihD-7cUiFFKVw',
+            'pk.eyJ1IjoibWFya2RvbmF0ZWxsaSIsImEiOiJjbTV6dGN6cHUwNmFxMmxxMDU2bm9qYjZmIn0.Ph5vwBssV0P1CeyoXfq1CQ'
         }
       ).addTo(this.$store.state.map);
     },
@@ -89,7 +89,7 @@ export const helpersMixin = {
         'northern mariana islands': 'MP',
         'puerto rico': 'PR',
         'us virgin islands': 'VI',
-        'us minor outlying islands': 'UM',
+        'us minor outlying islands': 'UM'
       };
 
       let abbr = name
@@ -101,6 +101,6 @@ export const helpersMixin = {
       }
 
       return null;
-    },
-  },
+    }
+  }
 };
